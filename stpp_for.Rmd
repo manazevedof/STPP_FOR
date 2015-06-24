@@ -1,0 +1,133 @@
+---
+title: "Dados do STPP - Fortaleza"
+author: "Mario"
+date: "Tuesday, June 23, 2015"
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+  word_document: default
+---
+
+###Carregando os pacotes necessários
+```{r,message=FALSE, warning=FALSE}
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(knitr)
+```
+
+###Leitura dos dados
+```{r}
+dados <- fread('TP.csv',sep=';')
+head(dados)
+```
+
+###Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
+
+```{r}
+tdia <- group_by(dados,mes,dia,dsem) %>%
+        summarise_each(funs(sum)) %>% 
+        select(-hora) 
+maio <- filter(tdia,mes==5) 
+total = as.list(colSums(maio))
+total[1:3] <- c('Total','','')
+tabela <- rbindlist(list(maio,total))
+kable(tabela)
+```
+
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ‘;’ como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
+
+```{r}
+write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)
+```
+
+###Questão 3 - Agregar os dados por mês para o ano todo e apresentar uma tabela completa, incluindo uma última linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.
+
+```{r}
+tmes <- group_by(tdia,mes) %>%
+        summarise_each(funs(sum)) %>%
+        select(-c(dia,dsem))   
+total = as.list(colSums(tmes))
+total[1] <- 'Total'
+tabela <- rbindlist(list(tmes,total))
+kable(tabela)
+```
+
+###Questão 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
+
+```{r}
+dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
+mm = c('janeiro','fevereiro','março','abril','maio','junho','julho','agosto',
+       'setembro','outubro','novembro','dezembro')
+vmax = max(tdia$ptot)
+dmax = tdia$dia[tdia$ptot==max(tdia$ptot)]
+mmax = tdia$mes[tdia$ptot==max(tdia$ptot)]
+dsmax = tdia$dsem[tdia$ptot==max(tdia$ptot)]
+vmin = min(tdia$ptot)
+dmin = tdia$dia[tdia$ptot==min(tdia$ptot)]
+mmin = tdia$mes[tdia$ptot==min(tdia$ptot)]
+dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]
+```
+
+Dia com maior demanda total: `r dmax`/`r mm[mmax]` (`r dd[dsmax]`) com `r vmax` passageiros.  
+Dia com menor demanda total: `r dmin`/`r mm[mmin]` (`r dd[dsmin]`) com `r vmin` passageiros.
+
+###Questão 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
+
+```{r}
+vmax = max(tmes$ptot)
+mmax = tmes$mes[tmes$ptot==max(tmes$ptot)]
+vmin = min(tmes$ptot)
+mmin = tmes$mes[tmes$ptot==min(tmes$ptot)]
+```
+
+Mes com maior demanda total: `r mm[mmax]` com `r vmax` passageiros.  
+Mes com menor demanda total: `r mm[mmin]` com `r vmin` passageiros.
+
+###Questão 6 - Calcular e apresentar o percentual mensal de validações (viagens) integradas. Na saída de dados, usar o nome do mês e não o número.
+
+```{r}
+valid <- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %>%
+        select(mes,pint)
+kable(valid)
+```
+
+###Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, ...
+
+```{r}
+medDS <- group_by(tdia,dsem) %>%
+        summarise(media = mean(ptot)) %>% 
+        arrange(dsem) %>%
+        mutate(dsem=dd[dsem])
+kable(medDS)
+```
+
+###Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
+
+```{r}
+tempMes <- mutate(tmes,peq = inte+0.5*meia) %>%
+        select(mes,ptot,peq)
+total = as.list(colSums(tempMes))
+tempMes <- mutate(tempMes,mes=mm[mes])
+total[1] <- 'Total'
+tabela <- rbindlist(list(tempMes,total))
+kable(tabela)
+```
+
+###Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
+
+```{r}
+tempMes <- mutate(tmes,pvan = ptot - pbus,percbus=100*pbus/ptot,percvan=100*pvan/ptot) %>%
+        select(mes,pbus,percbus,pvan,percvan)
+total = as.list(colSums(tempMes))
+tempMes <- mutate(tempMes,mes=mm[mes])
+total[1] <- 'Total'
+total$percbus <- 100*total$pbus/(total$pbus+total$pvan)
+total$percvan <- 100*total$pvan/(total$pbus+total$pvan)
+tabela <- rbindlist(list(tempMes,total))
+kable(tabela)
+```
+
+
+
