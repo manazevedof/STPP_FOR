@@ -36,7 +36,7 @@ tabela <- rbindlist(list(maio,total))
 kable(tabela, format = "markdown")
 ```
 
-###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ';' como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
 
 ```{r}
 write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)
