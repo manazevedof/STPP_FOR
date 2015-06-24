@@ -33,7 +33,7 @@ maio <- filter(tdia,mes==5)
 total = as.list(colSums(maio))
 total[1:3] <- c('Total','','')
 tabela <- rbindlist(list(maio,total))
-kable(tabela)
+kable(tabela, format = "markdown")
 ```
 
 ###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ‘;’ como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
@@ -51,7 +51,7 @@ tmes <- group_by(tdia,mes) %>%
 total = as.list(colSums(tmes))
 total[1] <- 'Total'
 tabela <- rbindlist(list(tmes,total))
-kable(tabela)
+kable(tabela, format = "markdown")
 ```
 
 ###Questão 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
@@ -90,7 +90,7 @@ Mes com menor demanda total: `r mm[mmin]` com `r vmin` passageiros.
 ```{r}
 valid <- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %>%
         select(mes,pint)
-kable(valid)
+kable(valid, format = "markdown")
 ```
 
 ###Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, ...
@@ -100,7 +100,7 @@ medDS <- group_by(tdia,dsem) %>%
         summarise(media = mean(ptot)) %>% 
         arrange(dsem) %>%
         mutate(dsem=dd[dsem])
-kable(medDS)
+kable(medDS, format = "markdown")
 ```
 
 ###Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
@@ -112,7 +112,7 @@ total = as.list(colSums(tempMes))
 tempMes <- mutate(tempMes,mes=mm[mes])
 total[1] <- 'Total'
 tabela <- rbindlist(list(tempMes,total))
-kable(tabela)
+kable(tabela, format = "markdown")
 ```
 
 ###Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
@@ -126,7 +126,7 @@ total[1] <- 'Total'
 total$percbus <- 100*total$pbus/(total$pbus+total$pvan)
 total$percvan <- 100*total$pvan/(total$pbus+total$pvan)
 tabela <- rbindlist(list(tempMes,total))
-kable(tabela)
+kable(tabela, format = "markdown")
 ```
 
 
