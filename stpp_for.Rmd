@@ -36,7 +36,7 @@ tabela <- rbindlist(list(maio,total))
 kable(tabela, format = "markdown")
 ```
 
-###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ‘;’ como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ';' como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
 
 ```{r}
 write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)
@@ -54,7 +54,7 @@ tabela <- rbindlist(list(tmes,total))
 kable(tabela, format = "markdown")
 ```
 
-###Questão 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
 
 ```{r}
 dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
@@ -73,7 +73,7 @@ dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]
 Dia com maior demanda total: `r dmax`/`r mm[mmax]` (`r dd[dsmax]`) com `r vmax` passageiros.  
 Dia com menor demanda total: `r dmin`/`r mm[mmin]` (`r dd[dsmin]`) com `r vmin` passageiros.
 
-###Questão 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
 
 ```{r}
 vmax = max(tmes$ptot)

@@ -79,7 +79,7 @@ kable(tabela, format = "markdown")
 |5     |31  |7    |   704730|   280356|   665783|   626772|   631199|   60722|  12809|
 |Total |    |     | 27620021| 10881196| 25907706| 24896783| 24817985| 2203667| 598369|
 
-###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ; como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ';' como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
 
 
 ```r
@@ -117,7 +117,7 @@ kable(tabela, format = "markdown")
 |12    |  30154192|  11139765|  28209129|  28295907|  24863040|  4746220|  544932|
 |Total | 348182147| 122898078| 326198341| 317776495| 285516598| 54401922| 8263627|
 
-###Questão 4 - Identificar e apresentar, no formato diadomes/nomedomes (diadasemana), quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
 
 
 ```r
@@ -137,7 +137,7 @@ dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]
 Dia com maior demanda total: 15/abril (terça-feira) com 1259252 passageiros.  
 Dia com menor demanda total: 30/março (domingo) com 236979 passageiros.
 
-###Questão 5 - Identificar e apresentar, no formato nomedomes, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
 
 
 ```r
