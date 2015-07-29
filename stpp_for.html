@@ -68,7 +68,7 @@ img {
 
 
 <div id="carregando-os-pacotes-necessarios" class="section level3">
-<h3>Carregando os pacotes necessários</h3>
+<h3>Carregando os pacotes necessÃ¡rios</h3>
 <pre class="r"><code>library(data.table)
 library(dplyr)
 library(tidyr)
@@ -86,8 +86,8 @@ head(dados)</code></pre>
 ## 5:   1   1    4    4  2464 1262  2460  2462  2174  249   41
 ## 6:   1   1    4    5 12305 6029 12169 11982 10936 1146  223</code></pre>
 </div>
-<div id="questao-1---agregar-os-dados-por-dia-para-o-ano-todo-e-apresentar-uma-tabela-com-os-dados-apenas-do-mes-de-maio.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-e-claro-a-da-hora.-no-final-da-tabela-deve-aparecer-uma-linha-com-os-totais-do-mes." class="section level3">
-<h3>Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.</h3>
+<div id="questao-1---agregar-os-dados-por-dia-para-o-ano-todo-e-apresentar-uma-tabela-com-os-dados-apenas-do-mas-de-maio.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-a-claro-a-da-hora.-no-final-da-tabela-deve-aparecer-uma-linha-com-os-totais-do-mas." class="section level3">
+<h3>QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mÃªs de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs.</h3>
 <pre class="r"><code>tdia &lt;- group_by(dados,mes,dia,dsem) %&gt;%
         summarise_each(funs(sum)) %&gt;% 
         select(-hora) 
@@ -499,12 +499,12 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="questao-2---com-os-mesmos-dados-obtidos-na-questao-anterior-gerar-um-arquivo-tipo-csv-usando-o-como-separador-com-os-dados-de-todos-os-dias-do-ano-incluindo-um-cabecalho-com-os-nomes-das-colunas." class="section level3">
-<h3>Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ‘;’ como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.</h3>
+<div id="questao-2---com-os-mesmos-dados-obtidos-na-questao-anterior-gerar-um-arquivo-tipo-csv-usando-o-como-separador-com-os-dados-de-todos-os-dias-do-ano-incluindo-um-cabeaalho-com-os-nomes-das-colunas." class="section level3">
+<h3>QuestÃ£o 2 - Com os mesmos dados obtidos na questÃ£o anterior, gerar um arquivo tipo csv (usando o “;” como separador), com os dados de todos os dias do ano, incluindo um cabeÃ§alho com os nomes das colunas.</h3>
 <pre class="r"><code>write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)</code></pre>
 </div>
-<div id="questao-3---agregar-os-dados-por-mes-para-o-ano-todo-e-apresentar-uma-tabela-completa-incluindo-uma-ultima-linha-com-o-total-do-ano.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-as-colunas-dia-dsem-e-hora." class="section level3">
-<h3>Questão 3 - Agregar os dados por mês para o ano todo e apresentar uma tabela completa, incluindo uma última linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.</h3>
+<div id="questao-3---agregar-os-dados-por-mas-para-o-ano-todo-e-apresentar-uma-tabela-completa-incluindo-uma-altima-linha-com-o-total-do-ano.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-as-colunas-dia-dsem-e-hora." class="section level3">
+<h3>QuestÃ£o 3 - Agregar os dados por mÃªs para o ano todo e apresentar uma tabela completa, incluindo uma Ãºltima linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.</h3>
 <pre class="r"><code>tmes &lt;- group_by(tdia,mes) %&gt;%
         summarise_each(funs(sum)) %&gt;%
         select(-c(dia,dsem))   
@@ -660,9 +660,9 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 </table>
 </div>
 <div id="questao-4---identificar-e-apresentar-no-formato-diadomesnomedomes-diadasemana-quais-foram-os-dias-com-a-maior-e-a-menor-demanda-de-passageiros-e-os-respectivos-valores." class="section level3">
-<h3>Questão 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
-<pre class="r"><code>dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
-mm = c('janeiro','fevereiro','março','abril','maio','junho','julho','agosto',
+<h3>QuestÃ£o 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
+<pre class="r"><code>dd = c('domingo','segunda-feira','terÃ§a-feira','quarta-feira','quinta-feira','sexta-feira','sÃ¡bado','domingo')
+mm = c('janeiro','fevereiro','marÃ§o','abril','maio','junho','julho','agosto',
        'setembro','outubro','novembro','dezembro')
 vmax = max(tdia$ptot)
 dmax = tdia$dia[tdia$ptot==max(tdia$ptot)]
@@ -672,18 +672,18 @@ vmin = min(tdia$ptot)
 dmin = tdia$dia[tdia$ptot==min(tdia$ptot)]
 mmin = tdia$mes[tdia$ptot==min(tdia$ptot)]
 dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]</code></pre>
-<p>Dia com maior demanda total: 15/abril (terça-feira) com 1259252 passageiros.<br />Dia com menor demanda total: 30/março (domingo) com 236979 passageiros.</p>
+<p>Dia com maior demanda total: 15/abril (terÃ§a-feira) com 1259252 passageiros.<br />Dia com menor demanda total: 30/marÃ§o (domingo) com 236979 passageiros.</p>
 </div>
 <div id="questao-5---identificar-e-apresentar-no-formato-nomedomes-quais-foram-os-meses-com-a-maior-e-a-menor-demanda-de-passageiros-e-os-respectivos-valores." class="section level3">
-<h3>Questão 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
+<h3>QuestÃ£o 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
 <pre class="r"><code>vmax = max(tmes$ptot)
 mmax = tmes$mes[tmes$ptot==max(tmes$ptot)]
 vmin = min(tmes$ptot)
 mmin = tmes$mes[tmes$ptot==min(tmes$ptot)]</code></pre>
 <p>Mes com maior demanda total: outubro com 31968460 passageiros.<br />Mes com menor demanda total: junho com 23372027 passageiros.</p>
 </div>
-<div id="questao-6---calcular-e-apresentar-o-percentual-mensal-de-validacoes-viagens-integradas.-na-saida-de-dados-usar-o-nome-do-mes-e-nao-o-numero." class="section level3">
-<h3>Questão 6 - Calcular e apresentar o percentual mensal de validações (viagens) integradas. Na saída de dados, usar o nome do mês e não o número.</h3>
+<div id="questao-6---calcular-e-apresentar-o-percentual-mensal-de-validaaaes-viagens-integradas.-na-saada-de-dados-usar-o-nome-do-mas-e-nao-o-namero." class="section level3">
+<h3>QuestÃ£o 6 - Calcular e apresentar o percentual mensal de validaÃ§Ãµes (viagens) integradas. Na saÃ­da de dados, usar o nome do mÃªs e nÃ£o o nÃºmero.</h3>
 <pre class="r"><code>valid &lt;- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %&gt;%
         select(mes,pint)
 kable(valid, format = &quot;markdown&quot;)</code></pre>
@@ -704,7 +704,7 @@ kable(valid, format = &quot;markdown&quot;)</code></pre>
 <td align="right">5.679540</td>
 </tr>
 <tr class="odd">
-<td align="left">março</td>
+<td align="left">marÃ§o</td>
 <td align="right">5.640426</td>
 </tr>
 <tr class="even">
@@ -746,8 +746,8 @@ kable(valid, format = &quot;markdown&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="questao-7---calcular-e-apresentar-o-valor-medio-da-demanda-para-cada-dia-da-semana-considerando-todos-os-dias-do-ano.-na-saida-de-dados-os-dias-da-semana-devem-aparecer-com-os-seus-nomes-isto-e-domingo-segunda-terca" class="section level3">
-<h3>Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, …</h3>
+<div id="questao-7---calcular-e-apresentar-o-valor-madio-da-demanda-para-cada-dia-da-semana-considerando-todos-os-dias-do-ano.-na-saada-de-dados-os-dias-da-semana-devem-aparecer-com-os-seus-nomes-isto-a-domingo-segunda-teraa" class="section level3">
+<h3>QuestÃ£o 7 - Calcular e apresentar o valor mÃ©dio da demanda para cada dia da semana, considerando todos os dias do ano. Na saÃ­da de dados, os dias da semana devem aparecer com os seus nomes, isto Ã©, domingo, segunda, terÃ§a, …</h3>
 <pre class="r"><code>medDS &lt;- group_by(tdia,dsem) %&gt;%
         summarise(media = mean(ptot)) %&gt;% 
         arrange(dsem) %&gt;%
@@ -770,7 +770,7 @@ kable(medDS, format = &quot;markdown&quot;)</code></pre>
 <td align="right">1100023.2</td>
 </tr>
 <tr class="odd">
-<td align="left">terça-feira</td>
+<td align="left">terÃ§a-feira</td>
 <td align="right">1084850.9</td>
 </tr>
 <tr class="even">
@@ -786,14 +786,14 @@ kable(medDS, format = &quot;markdown&quot;)</code></pre>
 <td align="right">1074003.1</td>
 </tr>
 <tr class="odd">
-<td align="left">sábado</td>
+<td align="left">sÃ¡bado</td>
 <td align="right">789127.0</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="questao-8---calcular-e-apresentar-os-valores-mensais-de-passageiros-totais-e-equivalentes.-neste-caso-as-passagens-inteiras-tem-peso-1-as-meia-passagens-tem-peso-05-e-as-gratuidades-0-zero.-apresentar-linha-com-os-valores-anuais." class="section level3">
-<h3>Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.</h3>
+<div id="questao-8---calcular-e-apresentar-os-valores-mensais-de-passageiros-totais-e-equivalentes.-neste-caso-as-passagens-inteiras-tam-peso-1-as-meia-passagens-tam-peso-05-e-as-gratuidades-0-zero.-apresentar-linha-com-os-valores-anuais." class="section level3">
+<h3>QuestÃ£o 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras tÃªm peso 1, as meia-passagens tÃªm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.</h3>
 <pre class="r"><code>tempMes &lt;- mutate(tmes,peq = inte+0.5*meia) %&gt;%
         select(mes,ptot,peq)
 total = as.list(colSums(tempMes))
@@ -821,7 +821,7 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 <td align="right">25704645</td>
 </tr>
 <tr class="odd">
-<td align="left">março</td>
+<td align="left">marÃ§o</td>
 <td align="right">27761078</td>
 <td align="right">24346645</td>
 </tr>
@@ -878,8 +878,8 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="questao-9---calcular-e-apresentar-os-valores-totais-mensais-de-passageiros-do-sistema-de-onibus-e-o-de-vans-com-os-respectivos-valores-percentuais.-apresentar-linha-com-os-valores-anuais." class="section level3">
-<h3>Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.</h3>
+<div id="questao-9---calcular-e-apresentar-os-valores-totais-mensais-de-passageiros-do-sistema-de-anibus-e-o-de-vans-com-os-respectivos-valores-percentuais.-apresentar-linha-com-os-valores-anuais." class="section level3">
+<h3>QuestÃ£o 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ã´nibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.</h3>
 <pre class="r"><code>tempMes &lt;- mutate(tmes,pvan = ptot - pbus,percbus=100*pbus/ptot,percvan=100*pvan/ptot) %&gt;%
         select(mes,pbus,percbus,pvan,percvan)
 total = as.list(colSums(tempMes))
@@ -915,7 +915,7 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 <td align="right">11.329049</td>
 </tr>
 <tr class="odd">
-<td align="left">março</td>
+<td align="left">marÃ§o</td>
 <td align="right">24757786</td>
 <td align="right">89.18164</td>
 <td align="right">3003292</td>
