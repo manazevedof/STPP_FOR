@@ -9,7 +9,7 @@ output:
   word_document: default
 ---
 
-###Carregando os pacotes necess√°rios
+###Carregando os pacotes necess·rios
 ```{r,message=FALSE, warning=FALSE}
 library(data.table)
 library(dplyr)
@@ -23,7 +23,11 @@ dados <- fread('TP.csv',sep=';')
 head(dados)
 ```
 
+<<<<<<< HEAD
 ###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, √© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do m√™s.
+=======
+###Quest√£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mÍs de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, È claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÍs.
+>>>>>>> origin/master
 
 ```{r}
 tdia <- group_by(dados,mes,dia,dsem) %>%

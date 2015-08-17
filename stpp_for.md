@@ -2,7 +2,7 @@
 Mario  
 Tuesday, June 23, 2015  
 
-###Carregando os pacotes necessÃ¡rios
+###Carregando os pacotes necessários
 
 ```r
 library(data.table)
@@ -28,7 +28,11 @@ head(dados)
 ## 6:   1   1    4    5 12305 6029 12169 11982 10936 1146  223
 ```
 
+<<<<<<< HEAD
 ###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs.
+=======
+###QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
+>>>>>>> origin/master
 
 
 ```r

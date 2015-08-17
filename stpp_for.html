@@ -74,7 +74,7 @@ img {
 
 
 <div id="carregando-os-pacotes-necessarios" class="section level3">
-<h3>Carregando os pacotes necessÃ¡rios</h3>
+<h3>Carregando os pacotes necessários</h3>
 <pre class="r"><code>library(data.table)
 library(dplyr)
 library(tidyr)
@@ -91,9 +91,7 @@ head(dados)</code></pre>
 ## 4:   1   1    4    3  1180  727  1179  1180  1036  135    9
 ## 5:   1   1    4    4  2464 1262  2460  2462  2174  249   41
 ## 6:   1   1    4    5 12305 6029 12169 11982 10936 1146  223</code></pre>
-</div>
-<div id="questao-1---agregar-os-dados-por-dia-para-o-ano-todo-e-apresentar-uma-tabela-com-os-dados-apenas-do-mes-de-maio.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-a-claro-a-da-hora.-no-final-da-tabela-deve-aparecer-uma-linha-com-os-totais-do-mas." class="section level3">
-<h3>Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs.</h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs. ======= ###QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês. &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</p>
 <pre class="r"><code>tdia &lt;- group_by(dados,mes,dia,dsem) %&gt;%
         summarise_each(funs(sum)) %&gt;% 
         select(-hora) 
