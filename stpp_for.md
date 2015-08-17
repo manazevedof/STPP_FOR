@@ -28,11 +28,7 @@ head(dados)
 ## 6:   1   1    4    5 12305 6029 12169 11982 10936 1146  223
 ```
 
-<<<<<<< HEAD
-###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs.
-=======
-###QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
->>>>>>> origin/master
+###Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
 
 
 ```r
@@ -89,14 +85,14 @@ barplot(maio$ptot,col='red')
 
 ![](stpp_for_files/figure-html/unnamed-chunk-3-1.png) 
 
-###QuestÃ£o 2 - Com os mesmos dados obtidos na questÃ£o anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeÃ§alho com os nomes das colunas.
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
 
 
 ```r
 write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)
 ```
 
-###QuestÃ£o 3 - Agregar os dados por mÃªs para o ano todo e apresentar uma tabela completa, incluindo uma Ãºltima linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.
+###Questão 3 - Agregar os dados por mês para o ano todo e apresentar uma tabela completa, incluindo uma última linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.
 
 
 ```r
@@ -127,12 +123,12 @@ kable(tabela, format = "markdown")
 |12    |  30154192|  11139765|  28209129|  28295907|  24863040|  4746220|  544932|
 |Total | 348182147| 122898078| 326198341| 317776495| 285516598| 54401922| 8263627|
 
-###QuestÃ£o 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
 
 
 ```r
-dd = c('domingo','segunda-feira','terÃ§a-feira','quarta-feira','quinta-feira','sexta-feira','sÃ¡bado','domingo')
-mm = c('janeiro','fevereiro','marÃ§o','abril','maio','junho','julho','agosto',
+dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
+mm = c('janeiro','fevereiro','março','abril','maio','junho','julho','agosto',
        'setembro','outubro','novembro','dezembro')
 vmax = max(tdia$ptot)
 dmax = tdia$dia[tdia$ptot==max(tdia$ptot)]
@@ -144,10 +140,10 @@ mmin = tdia$mes[tdia$ptot==min(tdia$ptot)]
 dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]
 ```
 
-Dia com maior demanda total: 15/abril (terÃ§a-feira) com 1259252 passageiros.  
-Dia com menor demanda total: 30/marÃ§o (domingo) com 236979 passageiros.
+Dia com maior demanda total: 15/abril (terça-feira) com 1259252 passageiros.  
+Dia com menor demanda total: 30/março (domingo) com 236979 passageiros.
 
-###QuestÃ£o 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
 
 
 ```r
@@ -160,7 +156,7 @@ mmin = tmes$mes[tmes$ptot==min(tmes$ptot)]
 Mes com maior demanda total: outubro com 31968460 passageiros.  
 Mes com menor demanda total: junho com 23372027 passageiros.
 
-###QuestÃ£o 6 - Calcular e apresentar o percentual mensal de validaÃ§Ãµes (viagens) integradas. Na saÃ­da de dados, usar o nome do mÃªs e nÃ£o o nÃºmero.
+###Questão 6 - Calcular e apresentar o percentual mensal de validações (viagens) integradas. Na saída de dados, usar o nome do mês e não o número.
 
 
 ```r
@@ -175,7 +171,7 @@ kable(valid, format = "markdown")
 |:---------|--------:|
 |janeiro   | 5.162224|
 |fevereiro | 5.679540|
-|marÃ§o    | 5.640426|
+|março     | 5.640426|
 |abril     | 6.000424|
 |maio      | 6.199543|
 |junho     | 6.397755|
@@ -186,7 +182,7 @@ kable(valid, format = "markdown")
 |novembro  | 6.883689|
 |dezembro  | 6.450390|
 
-###QuestÃ£o 7 - Calcular e apresentar o valor mÃ©dio da demanda para cada dia da semana, considerando todos os dias do ano. Na saÃ­da de dados, os dias da semana devem aparecer com os seus nomes, isto Ã©, domingo, segunda, terÃ§a, ...
+###Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, ...
 
 
 ```r
@@ -203,13 +199,13 @@ kable(medDS, format = "markdown")
 |:-------------|---------:|
 |domingo       |  485766.3|
 |segunda-feira | 1100023.2|
-|terÃ§a-feira  | 1084850.9|
+|terça-feira   | 1084850.9|
 |quarta-feira  | 1078054.9|
 |quinta-feira  | 1063253.3|
 |sexta-feira   | 1074003.1|
-|sÃ¡bado       |  789127.0|
+|sábado        |  789127.0|
 
-###QuestÃ£o 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras tÃªm peso 1, as meia-passagens tÃªm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
+###Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
 
 
 ```r
@@ -228,7 +224,7 @@ kable(tabela, format = "markdown")
 |:---------|---------:|---------:|
 |janeiro   |  29680019|  26289476|
 |fevereiro |  29462685|  25704645|
-|marÃ§o    |  27761078|  24346645|
+|março     |  27761078|  24346645|
 |abril     |  29182603|  25776116|
 |maio      |  27620021|  25919819|
 |junho     |  23372027|  21719354|
@@ -240,7 +236,7 @@ kable(tabela, format = "markdown")
 |dezembro  |  30154192|  27236150|
 |Total     | 348182147| 312717559|
 
-###QuestÃ£o 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ã´nibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
+###Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
 
 
 ```r
@@ -261,7 +257,7 @@ kable(tabela, format = "markdown")
 |:---------|---------:|--------:|--------:|---------:|
 |janeiro   |  26356480| 88.80210|  3323539| 11.197900|
 |fevereiro |  26124843| 88.67095|  3337842| 11.329049|
-|marÃ§o    |  24757786| 89.18164|  3003292| 10.818355|
+|março     |  24757786| 89.18164|  3003292| 10.818355|
 |abril     |  26194151| 89.75947|  2988452| 10.240526|
 |maio      |  24896783| 90.14035|  2723238|  9.859652|
 |junho     |  21193704| 90.67979|  2178323|  9.320214|

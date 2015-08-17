@@ -23,11 +23,7 @@ dados <- fread('TP.csv',sep=';')
 head(dados)
 ```
 
-<<<<<<< HEAD
-###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs.
-=======
-###QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
->>>>>>> origin/master
+###Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
 
 ```{r}
 tdia <- group_by(dados,mes,dia,dsem) %>%
@@ -41,13 +37,13 @@ kable(tabela, format = "markdown")
 barplot(maio$ptot,col='red')
 ```
 
-###QuestÃ£o 2 - Com os mesmos dados obtidos na questÃ£o anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeÃ§alho com os nomes das colunas.
+###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
 
 ```{r}
 write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)
 ```
 
-###QuestÃ£o 3 - Agregar os dados por mÃªs para o ano todo e apresentar uma tabela completa, incluindo uma Ãºltima linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.
+###Questão 3 - Agregar os dados por mês para o ano todo e apresentar uma tabela completa, incluindo uma última linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.
 
 ```{r}
 tmes <- group_by(tdia,mes) %>%
@@ -59,11 +55,11 @@ tabela <- rbindlist(list(tmes,total))
 kable(tabela, format = "markdown")
 ```
 
-###QuestÃ£o 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 4 - Identificar e apresentar, no formato "diadomes/nomedomes (diadasemana)", quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.
 
 ```{r}
-dd = c('domingo','segunda-feira','terÃ§a-feira','quarta-feira','quinta-feira','sexta-feira','sÃ¡bado','domingo')
-mm = c('janeiro','fevereiro','marÃ§o','abril','maio','junho','julho','agosto',
+dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
+mm = c('janeiro','fevereiro','março','abril','maio','junho','julho','agosto',
        'setembro','outubro','novembro','dezembro')
 vmax = max(tdia$ptot)
 dmax = tdia$dia[tdia$ptot==max(tdia$ptot)]
@@ -78,7 +74,7 @@ dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]
 Dia com maior demanda total: `r dmax`/`r mm[mmax]` (`r dd[dsmax]`) com `r vmax` passageiros.  
 Dia com menor demanda total: `r dmin`/`r mm[mmin]` (`r dd[dsmin]`) com `r vmin` passageiros.
 
-###QuestÃ£o 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
+###Questão 5 - Identificar e apresentar, no formato "nomedomes", quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.
 
 ```{r}
 vmax = max(tmes$ptot)
@@ -90,7 +86,7 @@ mmin = tmes$mes[tmes$ptot==min(tmes$ptot)]
 Mes com maior demanda total: `r mm[mmax]` com `r vmax` passageiros.  
 Mes com menor demanda total: `r mm[mmin]` com `r vmin` passageiros.
 
-###QuestÃ£o 6 - Calcular e apresentar o percentual mensal de validaÃ§Ãµes (viagens) integradas. Na saÃ­da de dados, usar o nome do mÃªs e nÃ£o o nÃºmero.
+###Questão 6 - Calcular e apresentar o percentual mensal de validações (viagens) integradas. Na saída de dados, usar o nome do mês e não o número.
 
 ```{r}
 valid <- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %>%
@@ -98,7 +94,7 @@ valid <- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %>%
 kable(valid, format = "markdown")
 ```
 
-###QuestÃ£o 7 - Calcular e apresentar o valor mÃ©dio da demanda para cada dia da semana, considerando todos os dias do ano. Na saÃ­da de dados, os dias da semana devem aparecer com os seus nomes, isto Ã©, domingo, segunda, terÃ§a, ...
+###Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, ...
 
 ```{r}
 medDS <- group_by(tdia,dsem) %>%
@@ -108,7 +104,7 @@ medDS <- group_by(tdia,dsem) %>%
 kable(medDS, format = "markdown")
 ```
 
-###QuestÃ£o 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras tÃªm peso 1, as meia-passagens tÃªm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
+###Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.
 
 ```{r}
 tempMes <- mutate(tmes,peq = inte+0.5*meia) %>%
@@ -120,7 +116,7 @@ tabela <- rbindlist(list(tempMes,total))
 kable(tabela, format = "markdown")
 ```
 
-###QuestÃ£o 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ã´nibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
+###Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.
 
 ```{r}
 tempMes <- mutate(tmes,pvan = ptot - pbus,percbus=100*pbus/ptot,percvan=100*pvan/ptot) %>%

@@ -91,7 +91,9 @@ head(dados)</code></pre>
 ## 4:   1   1    4    3  1180  727  1179  1180  1036  135    9
 ## 5:   1   1    4    4  2464 1262  2460  2462  2174  249   41
 ## 6:   1   1    4    5 12305 6029 12169 11982 10936 1146  223</code></pre>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, Ã© claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mÃªs. ======= ###QuestÃ£o 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês. &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</p>
+</div>
+<div id="questao-1---agregar-os-dados-por-dia-para-o-ano-todo-e-apresentar-uma-tabela-com-os-dados-apenas-do-mes-de-maio.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-e-claro-a-da-hora.-no-final-da-tabela-deve-aparecer-uma-linha-com-os-totais-do-mes." class="section level3">
+<h3>Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.</h3>
 <pre class="r"><code>tdia &lt;- group_by(dados,mes,dia,dsem) %&gt;%
         summarise_each(funs(sum)) %&gt;% 
         select(-hora) 
@@ -505,12 +507,12 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 <pre class="r"><code>barplot(maio$ptot,col='red')</code></pre>
 <p><img src="data:image/png;base64,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" alt /></p>
 </div>
-<div id="questao-2---com-os-mesmos-dados-obtidos-na-questao-anterior-gerar-um-arquivo-tipo-csv-usando-o-como-separador-com-os-dados-de-todos-os-dias-do-ano-incluindo-um-cabeaalho-com-os-nomes-das-colunas." class="section level3">
-<h3>QuestÃ£o 2 - Com os mesmos dados obtidos na questÃ£o anterior, gerar um arquivo tipo csv (usando o “;” como separador), com os dados de todos os dias do ano, incluindo um cabeÃ§alho com os nomes das colunas.</h3>
+<div id="questao-2---com-os-mesmos-dados-obtidos-na-questao-anterior-gerar-um-arquivo-tipo-csv-usando-o-como-separador-com-os-dados-de-todos-os-dias-do-ano-incluindo-um-cabecalho-com-os-nomes-das-colunas." class="section level3">
+<h3>Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o “;” como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.</h3>
 <pre class="r"><code>write.table(tdia,'dias_00.csv',sep=';',row.names=FALSE)</code></pre>
 </div>
-<div id="questao-3---agregar-os-dados-por-mas-para-o-ano-todo-e-apresentar-uma-tabela-completa-incluindo-uma-altima-linha-com-o-total-do-ano.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-as-colunas-dia-dsem-e-hora." class="section level3">
-<h3>QuestÃ£o 3 - Agregar os dados por mÃªs para o ano todo e apresentar uma tabela completa, incluindo uma Ãºltima linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.</h3>
+<div id="questao-3---agregar-os-dados-por-mes-para-o-ano-todo-e-apresentar-uma-tabela-completa-incluindo-uma-ultima-linha-com-o-total-do-ano.-as-colunas-da-tabela-devem-ser-as-mesmas-do-arquivo-de-entrada-menos-as-colunas-dia-dsem-e-hora." class="section level3">
+<h3>Questão 3 - Agregar os dados por mês para o ano todo e apresentar uma tabela completa, incluindo uma última linha com o total do ano. As colunas da tabela devem ser as mesmas do arquivo de entrada menos as colunas dia, dsem e hora.</h3>
 <pre class="r"><code>tmes &lt;- group_by(tdia,mes) %&gt;%
         summarise_each(funs(sum)) %&gt;%
         select(-c(dia,dsem))   
@@ -666,9 +668,9 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 </table>
 </div>
 <div id="questao-4---identificar-e-apresentar-no-formato-diadomesnomedomes-diadasemana-quais-foram-os-dias-com-a-maior-e-a-menor-demanda-de-passageiros-e-os-respectivos-valores." class="section level3">
-<h3>QuestÃ£o 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
-<pre class="r"><code>dd = c('domingo','segunda-feira','terÃ§a-feira','quarta-feira','quinta-feira','sexta-feira','sÃ¡bado','domingo')
-mm = c('janeiro','fevereiro','marÃ§o','abril','maio','junho','julho','agosto',
+<h3>Questão 4 - Identificar e apresentar, no formato “diadomes/nomedomes (diadasemana)”, quais foram os dias com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
+<pre class="r"><code>dd = c('domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado','domingo')
+mm = c('janeiro','fevereiro','março','abril','maio','junho','julho','agosto',
        'setembro','outubro','novembro','dezembro')
 vmax = max(tdia$ptot)
 dmax = tdia$dia[tdia$ptot==max(tdia$ptot)]
@@ -678,11 +680,11 @@ vmin = min(tdia$ptot)
 dmin = tdia$dia[tdia$ptot==min(tdia$ptot)]
 mmin = tdia$mes[tdia$ptot==min(tdia$ptot)]
 dsmin = tdia$dsem[tdia$ptot==min(tdia$ptot)]</code></pre>
-<p>Dia com maior demanda total: 15/abril (terÃ§a-feira) com 1259252 passageiros.<br />
-Dia com menor demanda total: 30/marÃ§o (domingo) com 236979 passageiros.</p>
+<p>Dia com maior demanda total: 15/abril (terça-feira) com 1259252 passageiros.<br />
+Dia com menor demanda total: 30/março (domingo) com 236979 passageiros.</p>
 </div>
 <div id="questao-5---identificar-e-apresentar-no-formato-nomedomes-quais-foram-os-meses-com-a-maior-e-a-menor-demanda-de-passageiros-e-os-respectivos-valores." class="section level3">
-<h3>QuestÃ£o 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
+<h3>Questão 5 - Identificar e apresentar, no formato “nomedomes”, quais foram os meses com a maior e a menor demanda de passageiros e os respectivos valores.</h3>
 <pre class="r"><code>vmax = max(tmes$ptot)
 mmax = tmes$mes[tmes$ptot==max(tmes$ptot)]
 vmin = min(tmes$ptot)
@@ -690,8 +692,8 @@ mmin = tmes$mes[tmes$ptot==min(tmes$ptot)]</code></pre>
 <p>Mes com maior demanda total: outubro com 31968460 passageiros.<br />
 Mes com menor demanda total: junho com 23372027 passageiros.</p>
 </div>
-<div id="questao-6---calcular-e-apresentar-o-percentual-mensal-de-validaaaes-viagens-integradas.-na-saada-de-dados-usar-o-nome-do-mas-e-nao-o-namero." class="section level3">
-<h3>QuestÃ£o 6 - Calcular e apresentar o percentual mensal de validaÃ§Ãµes (viagens) integradas. Na saÃ­da de dados, usar o nome do mÃªs e nÃ£o o nÃºmero.</h3>
+<div id="questao-6---calcular-e-apresentar-o-percentual-mensal-de-validacoes-viagens-integradas.-na-saida-de-dados-usar-o-nome-do-mes-e-nao-o-numero." class="section level3">
+<h3>Questão 6 - Calcular e apresentar o percentual mensal de validações (viagens) integradas. Na saída de dados, usar o nome do mês e não o número.</h3>
 <pre class="r"><code>valid &lt;- mutate(tmes,pint=ptot-pnin,pint=100*pint/ptot,mes=mm[mes]) %&gt;%
         select(mes,pint)
 kable(valid, format = &quot;markdown&quot;)</code></pre>
@@ -712,7 +714,7 @@ kable(valid, format = &quot;markdown&quot;)</code></pre>
 <td align="right">5.679540</td>
 </tr>
 <tr class="odd">
-<td align="left">marÃ§o</td>
+<td align="left">março</td>
 <td align="right">5.640426</td>
 </tr>
 <tr class="even">
@@ -754,8 +756,8 @@ kable(valid, format = &quot;markdown&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="questao-7---calcular-e-apresentar-o-valor-madio-da-demanda-para-cada-dia-da-semana-considerando-todos-os-dias-do-ano.-na-saada-de-dados-os-dias-da-semana-devem-aparecer-com-os-seus-nomes-isto-a-domingo-segunda-teraa" class="section level3">
-<h3>QuestÃ£o 7 - Calcular e apresentar o valor mÃ©dio da demanda para cada dia da semana, considerando todos os dias do ano. Na saÃ­da de dados, os dias da semana devem aparecer com os seus nomes, isto Ã©, domingo, segunda, terÃ§a, …</h3>
+<div id="questao-7---calcular-e-apresentar-o-valor-medio-da-demanda-para-cada-dia-da-semana-considerando-todos-os-dias-do-ano.-na-saida-de-dados-os-dias-da-semana-devem-aparecer-com-os-seus-nomes-isto-e-domingo-segunda-terca" class="section level3">
+<h3>Questão 7 - Calcular e apresentar o valor médio da demanda para cada dia da semana, considerando todos os dias do ano. Na saída de dados, os dias da semana devem aparecer com os seus nomes, isto é, domingo, segunda, terça, …</h3>
 <pre class="r"><code>medDS &lt;- group_by(tdia,dsem) %&gt;%
         summarise(media = mean(ptot)) %&gt;% 
         arrange(dsem) %&gt;%
@@ -778,7 +780,7 @@ kable(medDS, format = &quot;markdown&quot;)</code></pre>
 <td align="right">1100023.2</td>
 </tr>
 <tr class="odd">
-<td align="left">terÃ§a-feira</td>
+<td align="left">terça-feira</td>
 <td align="right">1084850.9</td>
 </tr>
 <tr class="even">
@@ -794,14 +796,14 @@ kable(medDS, format = &quot;markdown&quot;)</code></pre>
 <td align="right">1074003.1</td>
 </tr>
 <tr class="odd">
-<td align="left">sÃ¡bado</td>
+<td align="left">sábado</td>
 <td align="right">789127.0</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="questao-8---calcular-e-apresentar-os-valores-mensais-de-passageiros-totais-e-equivalentes.-neste-caso-as-passagens-inteiras-tam-peso-1-as-meia-passagens-tam-peso-05-e-as-gratuidades-0-zero.-apresentar-linha-com-os-valores-anuais." class="section level3">
-<h3>QuestÃ£o 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras tÃªm peso 1, as meia-passagens tÃªm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.</h3>
+<div id="questao-8---calcular-e-apresentar-os-valores-mensais-de-passageiros-totais-e-equivalentes.-neste-caso-as-passagens-inteiras-tem-peso-1-as-meia-passagens-tem-peso-05-e-as-gratuidades-0-zero.-apresentar-linha-com-os-valores-anuais." class="section level3">
+<h3>Questão 8 - Calcular e apresentar os valores mensais de passageiros totais e equivalentes. Neste caso, as passagens inteiras têm peso 1, as meia-passagens têm peso 0,5 e as gratuidades 0 (zero). Apresentar linha com os valores anuais.</h3>
 <pre class="r"><code>tempMes &lt;- mutate(tmes,peq = inte+0.5*meia) %&gt;%
         select(mes,ptot,peq)
 total = as.list(colSums(tempMes))
@@ -829,7 +831,7 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 <td align="right">25704645</td>
 </tr>
 <tr class="odd">
-<td align="left">marÃ§o</td>
+<td align="left">março</td>
 <td align="right">27761078</td>
 <td align="right">24346645</td>
 </tr>
@@ -886,8 +888,8 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="questao-9---calcular-e-apresentar-os-valores-totais-mensais-de-passageiros-do-sistema-de-anibus-e-o-de-vans-com-os-respectivos-valores-percentuais.-apresentar-linha-com-os-valores-anuais." class="section level3">
-<h3>QuestÃ£o 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ã´nibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.</h3>
+<div id="questao-9---calcular-e-apresentar-os-valores-totais-mensais-de-passageiros-do-sistema-de-onibus-e-o-de-vans-com-os-respectivos-valores-percentuais.-apresentar-linha-com-os-valores-anuais." class="section level3">
+<h3>Questão 9 - Calcular e apresentar os valores totais mensais de passageiros do sistema de Ônibus e o de vans, com os respectivos valores percentuais. Apresentar linha com os valores anuais.</h3>
 <pre class="r"><code>tempMes &lt;- mutate(tmes,pvan = ptot - pbus,percbus=100*pbus/ptot,percvan=100*pvan/ptot) %&gt;%
         select(mes,pbus,percbus,pvan,percvan)
 total = as.list(colSums(tempMes))
@@ -923,7 +925,7 @@ kable(tabela, format = &quot;markdown&quot;)</code></pre>
 <td align="right">11.329049</td>
 </tr>
 <tr class="odd">
-<td align="left">marÃ§o</td>
+<td align="left">março</td>
 <td align="right">24757786</td>
 <td align="right">89.18164</td>
 <td align="right">3003292</td>
