@@ -23,7 +23,7 @@ dados <- fread('TP.csv',sep=';')
 head(dados)
 ```
 
-###Questão 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mês de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
+###Questao 1 - Agregar os dados por dia para o ano todo e apresentar uma tabela com os dados apenas do mes de maio. As colunas da tabela devem ser as mesmas do arquivo de entrada menos, é claro, a da hora. No final da tabela deve aparecer uma linha com os totais do mês.
 
 ```{r}
 tdia <- group_by(dados,mes,dia,dsem) %>%
@@ -34,6 +34,7 @@ total = as.list(colSums(maio))
 total[1:3] <- c('Total','','')
 tabela <- rbindlist(list(maio,total))
 kable(tabela, format = "markdown")
+barplot(maio$ptot,col='red')
 ```
 
 ###Questão 2 - Com os mesmos dados obtidos na questão anterior, gerar um arquivo tipo csv (usando o ";" como separador), com os dados de todos os dias do ano, incluindo um cabeçalho com os nomes das colunas.
